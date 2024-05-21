@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Internet Computer Protocol features two primary types of calls that can be used to interact with canisters: query calls and update calls.
+The BigFile features two primary types of calls that can be used to interact with canisters: query calls and update calls.
 
 | Query Calls                                            | Update Calls                                        |
 | ------------------------------------------------------ | --------------------------------------------------- |
