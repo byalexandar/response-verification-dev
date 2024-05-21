@@ -1,0 +1,71 @@
+name: Create Release PR
+
+on: workflow_dispatch
+
+env:
+  SCCACHE_GHA_ENABLED: 'true'
+  RUSTC_WRAPPER: 'sccache'
+
+jobs:
+  bump_version:
+    name: Bump version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup-pnpm
+
+      - uses: ./.github/actions/setup-dfx
+
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Run sccache-cache
+        uses: mozilla-actions/sccache-action@v0.0.3
+
+      - name: Bump Version
+        id: cz
+        uses: commitizen-tools/commitizen-action@master
+        with:
+          commit: false
+          push: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print Version
+        run: echo "Bumping to version ${{ steps.cz.outputs.version }}"
+
+      - name: DFX prepare Certified Counter
+        working-directory: examples/certification/certified-counter
+        run: |
+          dfx canister create --all
+          dfx generate backend
+
+      - name: Update Cargo.lock
+        run: |
+          cargo build
+          pnpm build
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: 'Release ${{ steps.cz.outputs.version }}'
+          body: |
+            After merging this PR, tag the merge commit with:
+            ```shell
+            git tag ${{ steps.cz.outputs.version }}
+            git push origin ${{ steps.cz.outputs.version }}
+            ```
+          commit-message: 'chore: release ${{ steps.cz.outputs.version }}'
+          branch: 'release/${{ steps.cz.outputs.version }}'
+          add-paths: |
+            .cz.yaml
+            CHANGELOG.md
+            Cargo.toml
+            Cargo.lock
+            packages/certificate-verification-js/package.json
+            packages/ic-certification-testing-wasm/package.json
+            packages/ic-response-verification-tests/package.json
+            packages/ic-response-verification-wasm/package.json

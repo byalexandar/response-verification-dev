@@ -1,0 +1,32 @@
+[package]
+name = "ic-http-certification"
+description = "Certification for HTTP responses for the Internet Computer"
+readme = "README.md"
+documentation = "https://docs.rs/ic-http-certification"
+categories = ["api-bindings", "data-structures", "no-std"]
+keywords = ["internet-computer", "agent", "utility", "icp", "dfinity"]
+include = ["src", "Cargo.toml", "LICENSE", "README.md"]
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[features]
+serde = ["ic-certification/serde", "ic-certification/serde_bytes"]
+
+[dependencies]
+candid.workspace = true
+serde.workspace = true
+http.workspace = true
+urlencoding.workspace = true
+ic-representation-independent-hash.workspace = true
+ic-certification.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+rstest.workspace = true
+rstest_reuse.workspace = true
+hex.workspace = true

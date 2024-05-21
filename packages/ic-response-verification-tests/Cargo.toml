@@ -1,0 +1,19 @@
+[package]
+name = "ic-response-verification-tests"
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[dependencies]
+hex.workspace = true
+http.workspace = true
+ic-agent.workspace = true
+ic-utils.workspace = true
+tokio.workspace = true
+ic-response-verification.workspace = true
+ic-http-certification.workspace = true
+anyhow.workspace = true

@@ -1,0 +1,43 @@
+[package]
+name = "ic-certificate-verification"
+description = "Certificate verification for the Internet Computer"
+readme = "README.md"
+documentation = "https://docs.rs/ic-certificate-verification"
+categories = ["api-bindings", "authentication", "cryptography"]
+keywords = [
+    "internet-computer",
+    "icp",
+    "dfinity",
+    "certificate",
+    "verification",
+]
+include = ["src", "Cargo.toml", "README.md"]
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[dependencies]
+candid.workspace = true
+nom.workspace = true
+miracl_core_bls12381.workspace = true
+thiserror.workspace = true
+leb128.workspace = true
+cached.workspace = true
+sha2.workspace = true
+lazy_static.workspace = true
+parking_lot.workspace = true
+
+ic-certification = { workspace = true }
+ic-cbor.workspace = true
+
+[dev-dependencies]
+ic-response-verification-test-utils.workspace = true
+ic-certification-testing.workspace = true
+rand.workspace = true
+rand_chacha.workspace = true
+
+ic-types.workspace = true

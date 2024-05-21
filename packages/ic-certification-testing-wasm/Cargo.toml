@@ -1,0 +1,26 @@
+[package]
+name = "ic-certification-testing-wasm"
+description = "Utilities for testing applications that work with Internet Computer certification"
+include = ["src", "Cargo.toml", "README.md"]
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[features]
+debug = []
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen.workspace = true
+console_error_panic_hook.workspace = true
+wasm-bindgen-console-logger.workspace = true
+serde-wasm-bindgen.workspace = true
+ic-certification-testing.workspace = true
+log.workspace = true
+ic-types.workspace = true

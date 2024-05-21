@@ -1,0 +1,14 @@
+.idea
+.cargo
+.dfx
+target
+dist
+declarations
+node_modules
+.DS_Store
+/tmp
+
+pnpm-lock.yaml
+
+# commitizen is formatting the .cz.yaml file in a way that Prettier does not like
+.cz.yaml

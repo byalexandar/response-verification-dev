@@ -1,0 +1,38 @@
+[package]
+name = "ic-certification-testing"
+description = "Utilities for testing applications that work with Internet Computer certification"
+readme = "README.md"
+documentation = "https://docs.rs/ic-certification-testing"
+categories = ["api-bindings", "authentication", "cryptography"]
+keywords = ["internet-computer", "icp", "dfinity", "certification", "testing"]
+include = ["src", "Cargo.toml", "README.md"]
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+leb128.workspace = true
+thiserror.workspace = true
+wasm-bindgen.workspace = true
+js-sys.workspace = true
+console_error_panic_hook.workspace = true
+wasm-bindgen-console-logger.workspace = true
+log.workspace = true
+serde.workspace = true
+serde_cbor.workspace = true
+serde-wasm-bindgen.workspace = true
+rand.workspace = true
+getrandom.workspace = true
+
+ic-types.workspace = true
+ic-crypto-tree-hash.workspace = true
+ic-crypto-internal-threshold-sig-bls12381.workspace = true
+ic-crypto-internal-seed.workspace = true
+ic-crypto-internal-types.workspace = true

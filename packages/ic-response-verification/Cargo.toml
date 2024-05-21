@@ -1,0 +1,54 @@
+[package]
+name = "ic-response-verification"
+description = "Client side response verification for the Internet Computer"
+readme = "README.md"
+documentation = "https://docs.rs/ic-response-verification"
+categories = ["api-bindings", "authentication", "cryptography", "wasm"]
+keywords = ["internet-computer", "icp", "dfinity", "response", "verification"]
+include = ["src", "Cargo.toml", "README.md"]
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[features]
+debug = ["log/max_level_trace", "log/release_max_level_trace"]
+js = ["dep:wasm-bindgen", "dep:js-sys"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+base64.workspace = true
+nom.workspace = true
+js-sys = { version = "0.3", optional = true }
+wasm-bindgen = { version = "0.2", optional = true }
+thiserror.workspace = true
+sha2.workspace = true
+http.workspace = true
+ic-certification.workspace = true
+ic-http-certification.workspace = true
+ic-representation-independent-hash.workspace = true
+ic-cbor.workspace = true
+ic-certificate-verification.workspace = true
+flate2.workspace = true
+leb128.workspace = true
+candid.workspace = true
+log = { workspace = true, features = ["max_level_off", "release_max_level_off"] }
+hex.workspace = true
+urlencoding.workspace = true
+
+[dev-dependencies]
+serde_cbor.workspace = true
+wasm-bindgen-test.workspace = true
+ic-certification.workspace = true
+candid.workspace = true
+serde.workspace = true
+ic-response-verification-test-utils.workspace = true
+ic-crypto-tree-hash.workspace = true
+ic-types.workspace = true
+rstest.workspace = true
+ic-certification-testing.workspace = true

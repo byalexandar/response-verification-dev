@@ -1,0 +1,22 @@
+[package]
+name = "ic-response-verification-test-utils"
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[dependencies]
+base64.workspace = true
+hex.workspace = true
+ic-certification-testing.workspace = true
+ic-types.workspace = true
+sha2.workspace = true
+serde_cbor.workspace = true
+leb128.workspace = true
+serde.workspace = true
+flate2.workspace = true
+ic-certification = { workspace = true, features = ["default"] }
+ic-http-certification = { workspace = true }

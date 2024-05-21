@@ -1,0 +1,35 @@
+[package]
+name = "ic-response-verification-wasm"
+description = "WASM version of client side response verification for the Internet Computer"
+include = ["src", "Cargo.toml", "README.md"]
+
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[features]
+debug = ["ic-response-verification/debug"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-Oz", "--enable-mutable-globals"]
+
+[dependencies]
+ic-response-verification = { workspace = true, features = ["js"] }
+ic-http-certification.workspace = true
+console_error_panic_hook.workspace = true
+js-sys.workspace = true
+wasm-bindgen.workspace = true
+log.workspace = true
+wasm-bindgen-console-logger.workspace = true
+
+[dev-dependencies]
+base64.workspace = true
+wasm-bindgen-test.workspace = true
+ic-response-verification-test-utils.workspace = true
